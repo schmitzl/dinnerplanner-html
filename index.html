@@ -8,22 +8,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-
-  </head>
-  <body>
-	<div class="container">
-		<h1>Dinner planner</h1>
-		<div id="exampleView">
-			<div>
-				Number of guests: <span id="numberOfGuests"></span>
-			</div>
-			<div>
-          <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
-				<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
-			</div>
-		</div>
-	</div>
-
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/basic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+      
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
@@ -32,7 +20,179 @@
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
-	<script src="js/view/exampleView.js"></script>
-	<script src="js/view/exampleViewController.js"></script>
+	<script src="js/view/startView.js"></script>
+
+  </head>
+  <body>
+      
+    <div id="header" class="container-fluid">
+        <h1>Dinner planner <small>From the best chefs in the world directly into your kitchen</small></h1>
+    </div>  
+      
+      
+      <div id="startView" class="viewContainer">
+          <img src="images/bgStart.png">
+        
+          <div id="starView-container">
+            <h2>A Home Dinner Service</h2>
+            <hr></hr>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat</p>
+              <button id="createDinner-button" type="button" class="btn btn-default">Create new dinner</button>
+          </div>
+      </div>
+      
+      <div id="mainContent">
+      
+      <div id="sidebar">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper" class="viewContainer">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        My Dinner
+                    </a>
+                </li>
+                <li>
+                    <div>
+				        Number of guests: <span id="numberOfGuests"></span>
+                    </div>
+			        <div>
+                        <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+				        <button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+			        </div>
+                </li>
+                <li>
+                    <span class="sidebar-heading">Dish Name     Cost</span>
+                </li>
+            </ul>
+        </div>
+
+   
+      
+	<div id="main">
+        
+        <div id="findDishView" class="viewContainer">
+            <div id="selectDishBar" class="container-fluid">
+                <h3>Select dish</h3>
+                <div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter key words">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">search</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Main
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                  </ul>
+                </div>
+            </div>
+
+            <div id="dishesContainer">
+                <div class="row">
+                    <div class="meal-row col-lg-4 col-md-4 col-sm-6 web">
+                        <img class="pos-absolute" src="images/bakedbrie.jpg">
+                        <div class="pos-absolute">
+                            <h2 class="mealName">Meal</h2>
+                            <span class="mealDescription">bla bla</span>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        
+        <div id="dishView"  class="viewContainer">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="dishName">dish name</h2>
+                    <img class="dishPhoto" src="images/bakedbrie.jpg" />
+                </div>
+                <div class="col-lg-6">
+                    <h2>Ingredients for <span class="amountOfPeople">0</span> people</h2>
+                    
+                    <table>
+                      <tr>
+                        <td><span class="amount">2</span> <span class="measurement">g</span></td>
+                        <td>food</td>
+                        <td>SEK</td>
+                        <td>100</td>
+                      </tr>
+                    </table> 
+                </div>
+            </div>
+            <div class="row preparation">
+                <h2>Preparation</h2>
+                <div class="preparationText">How to prepare stuff...</div>
+            </div>
+            <div class="row backButton">
+                <button type="button" class="btn btn-default">back</button>
+            </div>
+        </div>
+        
+        <div id="dinnerOverView" class="viewContainer">
+            <div id="myDinnerBar" class="container-fluid">
+                <h2>My dinner: <span class="amountOfPeople">0</span> people</h2>
+                <button id="goBackAndEditDinnerButton" type="button" class="btn btn-default">Go back and edit dinner</button>
+            </div>
+            
+            
+            <div id="simpleOverview">
+                <div id="menuDishesContainer">
+                    <div class="row">
+                        <div class="meal-row col-lg-4 col-md-4 col-sm-6 web">
+                            <img class="pos-absolute" src="images/bakedbrie.jpg">
+                            <div class="pos-absolute">
+                                <h2 class="mealName">Meal</h2>
+                                <span class="mealPrice">100 SEK</span>
+                            </div>
+                        </div>
+
+                        <div class="meal-row col-lg-4 col-md-4 col-sm-6 web">
+                            <img class="pos-absolute invisible" src="images/bakedbrie.jpg">
+                            <div class="pos-absolute">
+                                <h2 class="mealName">total</h2>
+                                <span class="totalPrice">100 SEK</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="printButtonContainer">
+                    <button type="button" class="btn btn-default printButton">Print Full Recipe</button>
+                </div>
+             </div>
+            
+            <div id="printOverview">
+                <div class="row">
+                        <div class="meal-row col-lg-4 col-md-4 col-sm-6 web">
+                            <img class="pos-absolute" src="images/bakedbrie.jpg">
+                        </div>
+                        <div class="meal-row col-lg-4 col-md-4 col-sm-6 web">
+                            <h2 class="mealName">Meal</h2>
+                            <span class="description">bla bla</span>
+                        </div>
+                        <div class="meal-row col-lg-4 col-md-4 col-sm-6 web">
+                            <h4>Preparation</h4>
+                            <span class="preparationDescription">bla bla</span>
+                        </div>
+                    </div>
+            
+
+             </div>
+        
+        </div>
+        
+        </div>
+        
+    </div>
+
+
   </body>
 </html>

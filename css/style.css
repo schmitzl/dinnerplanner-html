@@ -1,0 +1,241 @@
+h1 {
+    front-size: 32pt;
+}
+
+h2 {
+    font-size: 18pt;
+}
+
+h1, h2 {
+    display: inline;
+}
+
+#header small {
+    font-style: italic;
+    color: rgb(60,60,60);
+}
+
+#startView {
+    margin-top: -80px;
+    position: fixed;
+    z-index: 1;
+}
+
+#startView img {
+    height: 100%;
+}
+
+.btn-default {
+    background-color: rgb(153, 215, 19);
+    color: white;
+}
+
+.btn-default:hover{
+    background-color: rgb(153, 185, 19);
+    color: white;
+}
+
+#header {
+    height: 80px;
+    background-color: rgba(153, 215, 19, 0.8);
+    padding-top: 15px;
+    padding-left: 50px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+
+
+
+#sidebar {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background-color: lightgrey;
+}
+
+
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav a:hover, 
+.sidebar-nav a:active,
+.sidebar-nav a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #sidebar {
+        padding-left: 250px;
+    }
+
+    #sidebar.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+#selectDishBar, #myDinnerBar {
+    background-color: rgb(230,230,230);
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 80px;
+    padding-top: 30px;
+    width: 100%;
+}
+
+#dishesContainer {
+    padding: 50px;
+}
+
+#dishView {
+    padding: 50px;
+}
+
+#dishView img {
+    margin-top: 10px;
+    width: 100%;
+}
+
+#dishView table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#dishView td {
+    text-align: left;
+    padding-right: 60px;
+    padding-bottom: 20px;
+}
+
+#dishView > tr:nth-child(even){background-color: #f2f2f2}
+
+.preparation {
+    margin-top: 40px;
+    padding-left: 20px;
+}
+
+.preparationText {
+    padding-top: 20px;
+}
+
+.backButton {
+    margin-left: 10px;
+    margin-top: 40px;
+}
+
+.printButtonContainer {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.printButton {
+    margin-top: 20px;
+}
+
+#menuDishesContainer {
+    margin: 50px;
+}
+
+
+#printOverview {
+    margin: 50px;
+}
+
+#starView-container {
+    margin-top: -800px;
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    z-index: 10;
+    padding: 50px;
+    width: 55%;
+    color: white;
+}
+
+#starView-container p{
+    color: white;
+}
+
+#starView-container button {
+    margin-top: 30px;
+}
+
+#mainContent {
+    padding-top: 80px;
+}
+
+#goBackAndEditDinnerButton {
+    margin-left: 65%;
+    margin-top: -60px;
+}
+
+@media(min-width: 1470px) {
+#goBackAndEditDinnerButton {
+    margin-top: 0px;
+}

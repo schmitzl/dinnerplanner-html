@@ -1,8 +1,12 @@
 $(function() {
-	//We instantiate our model
-	var model = new DinnerModel();
-	
-	//And create the needed controllers and views
-	var exampleView = new ExampleView($("#exampleView"));
 
+	$('.viewContainer').hide();
+    
+    //Create views
+    var startView = new StartView($('#startView'));
+    //var selectDishView = new SelectDishView($('#findDishView'));
+    
+    startView.showView();
+    
+    
 });
