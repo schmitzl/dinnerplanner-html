@@ -1,7 +1,7 @@
 //StartView Object constructor
 var StartView = function (container) {
     
-    function showView() {
+    var showStartView = function() {
         alert("test");
         container.show();
     }

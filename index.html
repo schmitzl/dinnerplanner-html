@@ -88,52 +88,20 @@
                   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Main
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
-                    <li><a href="#">HTML</a></li>
-                    <li><a href="#">CSS</a></li>
-                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="#" id="starter-dropdown">starter</a></li>
+                    <li><a href="#" id="main-dish-dropdown">main dish</a></li>
+                    <li><a href="#" id="dessert-dropdown">dessert</a></li>
                   </ul>
                 </div>
             </div>
 
-            <div id="dishesContainer">
-                <div class="row">
-                    <div class="meal-row col-lg-4 col-md-4 col-sm-6 web">
-                        <img class="pos-absolute" src="images/bakedbrie.jpg">
-                        <div class="pos-absolute">
-                            <h2 class="mealName">Meal</h2>
-                            <span class="mealDescription">bla bla</span>
-                        </div>
-                    </div> 
-                </div>
+            <div id="dishesContainer" class="row">
+
             </div>
         </div>
         
         <div id="dishView"  class="viewContainer">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h2 class="dishName">dish name</h2>
-                    <img class="dishPhoto" src="images/bakedbrie.jpg" />
-                </div>
-                <div class="col-lg-6">
-                    <h2>Ingredients for <span class="amountOfPeople">0</span> people</h2>
-                    
-                    <table>
-                      <tr>
-                        <td><span class="amount">2</span> <span class="measurement">g</span></td>
-                        <td>food</td>
-                        <td>SEK</td>
-                        <td>100</td>
-                      </tr>
-                    </table> 
-                </div>
-            </div>
-            <div class="row preparation">
-                <h2>Preparation</h2>
-                <div class="preparationText">How to prepare stuff...</div>
-            </div>
-            <div class="row backButton">
-                <button type="button" class="btn btn-default">back</button>
-            </div>
+            <button id="backToDishesButton" type="button" class="btn btn-default">back</button>
         </div>
         
         <div id="dinnerOverView" class="viewContainer">
@@ -165,7 +133,6 @@
                 </div>
             
                 <div class="printButtonContainer">
-                    <button type="button" class="btn btn-default printButton">Print Full Recipe</button>
                 </div>
              </div>
             
