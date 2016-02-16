@@ -4,7 +4,7 @@ var StartView = function (container) {
     $('#createDinner-button').on( "click", function() {
          $('#startView').hide();
          showFindDishView();
-         $('#sidebar-wrapper').show();
+         $('#sidebar').show();
     });
     
     showStartView = function() {

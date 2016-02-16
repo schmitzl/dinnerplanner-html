@@ -3,11 +3,12 @@ var DinnerModel = function() {
  
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
-    var numberOfGuests = 0;
-    //var menu = new Array();
+    var numberOfGuests = 1;
+    var menu = new Array();
 
 	this.setNumberOfGuests = function(num) {
-		numberOfGuests = num;
+        if(num >= 1)
+		  numberOfGuests = num;
 	}
 
 	// should return 
@@ -17,28 +18,28 @@ var DinnerModel = function() {
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-        /*for(var i = 0; i < menu.length; i++) {
+        for(var i = 0; i < menu.length; i++) {
             if(menu[i].type == type)
                 return menu[i];
-        }*/
+        }
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		//return menu;
+		return dishes;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
-		/*var ingredients = new Array();
+		ingredients = new Array();
         for(var i  = 0; i < menu.length; i++) 
             ingredients.push(menu[i].ingredients);
-        return ingredients;*/
+        return ingredients;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		/* var totalMenuPrice = 0;
+		totalMenuPrice = 0;
         for(var i = 0; i < menu.length; i++) {
             var currentDinnerIngredients = menu[i].ingredients;
             for(var j = 0; j < currentDinnerIngredients.length; j++) {
@@ -46,13 +47,13 @@ var DinnerModel = function() {
             }
         }
         totalMenuPrice *= numberOfGuests;
-        return totalMenuPrice; */
+        return totalMenuPrice; 
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-     /*   var currentDish = getDish(id);
+        var currentDish = getDish(id);
 		var typeOfCurrentDish = currentDish.type;
         
         var dishOfSameTypeAsCurrentMealInMenu = false;
@@ -65,20 +66,20 @@ var DinnerModel = function() {
         }
         
         if(!dishOfSameTypeAsCurrentMealInMenu)
-            menu.push(currentDish); */
+            menu.push(currentDish); 
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
         
-       /* var currentDishIsRemoved = false;
+        var currentDishIsRemoved = false;
         
 		for(var i = 0; i < menu.length && !currentDishIsRemoved; i++) {
             if(menu[i].id == id) {
                 delete menu[i];
                 currentDishIsRemoved = true;
             }
-        } */
+        } 
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

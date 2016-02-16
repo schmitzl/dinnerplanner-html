@@ -1,6 +1,7 @@
 $(function() {
     
     dinnerModel = new DinnerModel();
+    updateNumOfGuests();
     
 	$('.viewContainer').hide();
     
@@ -8,16 +9,35 @@ $(function() {
     startView = new StartView($('#startView'));
     findDishView = new FindDishView($('#findDishView'), dinnerModel.getDishes(), dinnerModel);
     dishView = new DishView($('#dishView'));
+    dinnerOverview = new DinnerOverview(dinnerModel);
         
     showStartView();
+    
+    $('#minusGuestButton').on( "click", function() {
+        dinnerModel.setNumberOfGuests(dinnerModel.getNumberOfGuests() - 1);
+        updateNumOfGuests();
+        updateDishView(dinnerModel.getNumberOfGuests());
+    });
+    
+    $('#plusGuestButton').on( "click", function() {
+        dinnerModel.setNumberOfGuests(dinnerModel.getNumberOfGuests() + 1);
+        updateNumOfGuests();
+        updateDishView(dinnerModel.getNumberOfGuests());
+    });
     
     
     $('#confirmDinnerButton').on( "click", function() {
          $('.viewContainer').hide();
-         $('#dinnerOverView').show();
+         showSimpleDinnerOverview();
+    });
+    
+    $('#goBackAndEditDinnerButton').on( "click", function() {
+         $('.viewContainer').hide();
+         showFindDishView();
     });
     
     
+
     
 /*
     
@@ -45,3 +65,8 @@ $(function() {
     
     
 });
+
+
+updateNumOfGuests = function(){
+    $('.numberOfGuests').html(dinnerModel.getNumberOfGuests());
+};

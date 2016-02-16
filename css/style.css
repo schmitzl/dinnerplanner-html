@@ -151,12 +151,14 @@ h1, h2 {
     width: 100%;
 }
 
+
 #dishesContainer {
     padding: 50px;
 }
 
 #dishView {
     padding: 50px;
+    margin-left: 250px;
 }
 
 #dishView img {
@@ -210,6 +212,10 @@ h1, h2 {
 
 #printOverview {
     margin: 50px;
+}
+
+#findDishView {
+    margin-left: 250px;
 }
 
 #starView-container {

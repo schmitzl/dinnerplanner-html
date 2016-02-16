@@ -2,6 +2,8 @@
 var FindDishView = function (container, dishes, dinnerModel) {
     
     showFindDishView = function() {
+        $('#sidebar').show();
+        
         container.show();
         createDishElements();
         
