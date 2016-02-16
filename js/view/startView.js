@@ -1,10 +1,15 @@
 //StartView Object constructor
 var StartView = function (container) {
     
-    var showStartView = function() {
-        alert("test");
+    $('#createDinner-button').on( "click", function() {
+         $('#startView').hide();
+         showFindDishView();
+         $('#sidebar-wrapper').show();
+    });
+    
+    showStartView = function() {
         container.show();
-    }
+    };
     
 	
 }
