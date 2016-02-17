@@ -27,6 +27,7 @@ var DishView = function (container, dinnerModel) {
                 type = "dessert";
             $('#' + type + 'NameCol').html(thisDish.name);
             $('#' + type + 'PriceCol').html(total);
+            $('#' + type + 'Remove').show();
         });
     }
     

@@ -39,7 +39,7 @@ var DinnerOverview = function (dinnerModel) {
         elemHtml += '<div class="meal-row col-lg-4 col-md-4 col-sm-6 web">';
         elemHtml += '<h4>Preparation</h4>';
         elemHtml += '<span class="preparationDescription">' + description + '</span>';
-        elemHtml += '</div>';
+        elemHtml += '</div><br>';
         
         return elemHtml;
     }

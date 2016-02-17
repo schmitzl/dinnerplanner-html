@@ -11,6 +11,8 @@ $(function() {
     dishView = new DishView($('#dishView'), dinnerModel);
     dinnerOverview = new DinnerOverview(dinnerModel);
         
+    $('.remove').hide();
+    
     showStartView();
     
     $('#minusGuestButton').on( "click", function() {    
