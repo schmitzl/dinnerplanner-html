@@ -56,6 +56,7 @@
                         My Dinner
                     </a>
                 </li>
+              
                 <li>
                     <div>
 				        Number of guests: 
@@ -67,7 +68,28 @@
 			        </div>
                 </li>
                 <li>
-                    <span class="sidebar-heading">Dish Name     Cost</span>
+                    <table id="menuTable">
+                        <tr>
+                            <td><b>Dish Name</b></td>
+                            <td><b>Cost</b></td>
+                        </tr>
+                        <tr id="starterRow">
+                            <td id="starterNameCol"></td>
+                            <td id="starterPriceCol"></td>
+                        </tr>
+                        <tr id="mainRow">
+                            <td id="mainNameCol"></td>
+                            <td id="mainPriceCol"></td>
+                        </tr>
+                        <tr id="dessertRow">
+                            <td id="dessertNameCol"></td>
+                            <td id="dessertPriceCol"></td>
+                        </tr>
+                        <tr id="pendingRow">
+                            <td id="pendingCol">Pending</td>
+                            <td id="pendingPriceCol">0</td>
+                        </tr>
+                    </table>
                 </li>
                 
                 <li><button id="confirmDinnerButton" type="button" class="btn btn-default">Confirm</button></li>
@@ -82,17 +104,8 @@
         <div id="findDishView" class="viewContainer">
             <div id="selectDishBar" class="container-fluid">
                 <h3>Select dish</h3>
-                <div>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Enter key words">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">search</button>
-                        </span>
-                    </div><!-- /input-group -->
-                </div><!-- /.col-lg-6 -->
-
-                <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Main
+                <div id="dropdownContainer" class="dropdown">
+                  <button id="selectButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Main
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                     <li><a href="#" id="starter-dropdown">starter</a></li>
@@ -100,6 +113,17 @@
                     <li><a href="#" id="dessert-dropdown">dessert</a></li>
                   </ul>
                 </div>
+                
+                <div id="searchButtonContainer">
+                    <div id="searchInputGroup" class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter key words">
+                        <span class="input-group-btn">
+                            <button id="searchButton" class="btn btn-default" type="button">search</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+
+                
             </div>
 
             <div id="dishesContainer" class="row">

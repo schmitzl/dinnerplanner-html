@@ -20,7 +20,7 @@ var DinnerOverview = function (dinnerModel) {
         elemHtml += '<img class="pos-absolute" src="images/' + img + '">';
         elemHtml += '<div class="pos-absolute">';
         elemHtml += '<h2 class="mealName">' + name + '</h2>';
-        elemHtml += '<span class="mealPrice">' + price + ' SEK</span>';
+        elemHtml += '<div class="mealPrice">' + price + ' SEK</div>';
         elemHtml += '</div>';
         elemHtml += '</div>';
         
@@ -49,15 +49,10 @@ var DinnerOverview = function (dinnerModel) {
         initializeView();
         
         menuHtml = "";
-        total = 0;
+        total = dinnerModel.getTotalMenuPrice();
         
         for(var i = 0; i < fullMenu.length; i++) {
-            price = 0;
-            for(var j = 0; j < fullMenu[i].ingredients.length; j++) {
-                price += fullMenu[i].ingredients[j].price * dinnerModel.getNumberOfGuests();
-            }
-            total += price;
-            html = createSimpleOverviewElem(fullMenu[i].name, price, fullMenu[i].image);
+            html = createSimpleOverviewElem(fullMenu[i][0].name, fullMenu[i][1], fullMenu[i][0].image);
             menuHtml += html; 
         }
                 
@@ -73,7 +68,7 @@ var DinnerOverview = function (dinnerModel) {
         menuHtml = "";
         
         for(var i = 0; i < fullMenu.length; i++) {
-            html = createPrintOverviewElem(fullMenu[i].image, fullMenu[i].name, fullMenu[i].description);
+            html = createPrintOverviewElem(fullMenu[i][0].image, fullMenu[i][0].name, fullMenu[i][0].description);
             menuHtml += html; 
         }
         

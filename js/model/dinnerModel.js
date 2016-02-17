@@ -4,7 +4,7 @@ var DinnerModel = function() {
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
     var numberOfGuests = 1;
-    var menu = new Array();
+    var menu = [];
 
 	this.setNumberOfGuests = function(num) {
         if(num >= 1)
@@ -16,24 +16,24 @@ var DinnerModel = function() {
 		return numberOfGuests;
 	}
 
-	//Returns the dish that is on the menu for selected type 
+	//Returns the dish that is on the menu[0] for selected type 
 	this.getSelectedDish = function(type) {
-        for(var i = 0; i < menu.length; i++) {
-            if(menu[i].type == type)
-                return menu[i];
+        for(var i = 0; i < menu[0].length; i++) {
+            if(menu[i][0].type == type)
+                return menu[i][0];
         }
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		return dishes;
+		return menu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		ingredients = new Array();
         for(var i  = 0; i < menu.length; i++) 
-            ingredients.push(menu[i].ingredients);
+            ingredients.push(menu[i][0].ingredients);
         return ingredients;
 	}
 
@@ -41,7 +41,7 @@ var DinnerModel = function() {
 	this.getTotalMenuPrice = function() {
 		totalMenuPrice = 0;
         for(var i = 0; i < menu.length; i++) {
-            var currentDinnerIngredients = menu[i].ingredients;
+            var currentDinnerIngredients = menu[i][0].ingredients;
             for(var j = 0; j < currentDinnerIngredients.length; j++) {
                 totalMenuPrice += currentDinnerIngredients[j];
             }
@@ -53,20 +53,26 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-        var currentDish = getDish(id);
-		var typeOfCurrentDish = currentDish.type;
+        var currentDish = this.getDish(id);
+        price = 0;
+        
+        for(var i = 0; i < currentDish.ingredients.length; i++) {
+            price += currentDish.ingredients[i].price;
+        }
+        
+		var typeOfCurrentDish = currentDish.type;        
         
         var dishOfSameTypeAsCurrentMealInMenu = false;
         
         for(var i = 0; i < menu.length && !dishOfSameTypeAsCurrentMealInMenu; i++) {
-            if(menu[i].type == typeOfCurrentDish) {
-                menu[i] = currentDish;
+            if(menu[i][0].type == typeOfCurrentDish) {
+                menu[i][0] = currentDish;
                 dishOfSameTypeAsCurrentMealInMenu = true;
             }
         }
         
         if(!dishOfSameTypeAsCurrentMealInMenu)
-            menu.push(currentDish); 
+            menu.push([currentDish, price]);
 	}
 
 	//Removes dish from menu

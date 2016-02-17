@@ -1,7 +1,8 @@
 //DishView Object constructor
-var DishView = function (container) {
+var DishView = function (container, dinnerModel) {
     
     var thisDish;
+    var total;
     
     showDishView = function(dish, amountOfPeople) {
         thisDish = dish;
@@ -14,8 +15,18 @@ var DishView = function (container) {
             showFindDishView();
         });
         
-        $('#confirmDishButton').on("click", function(){
-            alert("works");
+       $('#confirmDishButton').on("click", function(){
+            dinnerModel.addDishToMenu(thisDish.id);
+            $('#pendingRow').hide();
+            type = "";
+            if(thisDish.type == "main dish")
+                type = "main";
+            else if (thisDish.type == "starter")
+                type = "starter";
+            else 
+                type = "dessert";
+            $('#' + type + 'NameCol').html(thisDish.name);
+            $('#' + type + 'PriceCol').html(total);
         });
     }
     
@@ -29,7 +40,17 @@ var DishView = function (container) {
         });
         
         $('#confirmDishButton').on("click", function(){
-            alert("works");
+            dinnerModel.addDishToMenu(thisDish.id);
+            $('#pendingRow').hide();
+            type = "";
+            if(thisDish.type == "main dish")
+                type = "main";
+            else if (thisDish.type == "starter")
+                type = "starter";
+            else 
+                type = "dessert";
+            $('#' + type + 'NameCol').html(thisDish.name);
+            $('#' + type + 'PriceCol').html(total);
         });
     }
 	

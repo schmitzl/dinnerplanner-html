@@ -1,5 +1,20 @@
 //FindDishView Object constructor
 var FindDishView = function (container, dishes, dinnerModel) {
+        
+    $('#starter-dropdown').on('click', function(){
+        dishes = dinnerModel.getAllDishes("starter");
+        createDishElements();
+    });
+    $('#main-dish-dropdown').on('click', function(){
+        dishes = dinnerModel.getAllDishes("main dish");
+        createDishElements();
+    });
+    $('#dessert-dropdown').on('click', function(){
+        dishes = dinnerModel.getAllDishes("dessert");
+        createDishElements();
+    });
+    
+    
     
     showFindDishView = function() {
         $('#sidebar').show();
