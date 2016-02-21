@@ -1,5 +1,21 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
+    
+    this.NUM_OF_GUESTS_CHANGED = 0;
+    this.MENU_CHANGED = 1;
+    
+    this.observers = [];
+    
+    this.attach = function (observer) {
+        this.observers.push(observer);
+    };
+    
+    this.notify = function(args) {
+        for(var i = 0; i < this.observers.length; i++){
+            this.observers[i](this, args);
+        }
+    };
+    
  
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
@@ -7,8 +23,10 @@ var DinnerModel = function() {
     var menu = [];
 
 	this.setNumberOfGuests = function(num) {
-        if(num >= 1)
+        if(num >= 1) {
 		  numberOfGuests = num;
+        }
+        this.notify(this.NUM_OF_GUESTS_CHANGED);
 	}
 
 	// should return 
@@ -77,12 +95,12 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-        
+                
         var currentDishIsRemoved = false;
         
 		for(var i = 0; i < menu.length && !currentDishIsRemoved; i++) {
-            if(menu[i].id == id) {
-                delete menu[i];
+            if(menu[i][0].id == id) {
+                menu.splice(i);
                 currentDishIsRemoved = true;
             }
         } 
@@ -118,6 +136,14 @@ var DinnerModel = function() {
 	this.getDish = function (id) {
 	  for(key in dishes){
 			if(dishes[key].id == id) {
+				return dishes[key];
+			}
+		}
+	}
+    
+    this.getDishByName = function (name) {
+	  for(key in dishes){
+			if(dishes[key].name == name) {
 				return dishes[key];
 			}
 		}

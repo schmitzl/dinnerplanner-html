@@ -1,19 +1,50 @@
 //DishView Object constructor
-var DishView = function (container, dinnerModel) {
+var DishViewController = function (container, dinnerModel) {
+
+    updateDishView = function(amountOfPeople) {
+        dishViewElem = createDishViewElem(thisDish.name, thisDish.image, amountOfPeople, thisDish.ingredients, thisDish.description);
+        $('#dishViewContent').html(dishViewElem);
+        
+        
+        $('#confirmDishButton').on("click", function(){
+            dinnerModel.addDishToMenu(thisDish.id);
+            $('#pendingRow').hide();
+            type = "";
+            if(thisDish.type == "main dish")
+                type = "main";
+            else if (thisDish.type == "starter")
+                type = "starter";
+            else 
+                type = "dessert";
+            $('#' + type + 'NameCol').html(thisDish.name);
+            $('#' + type + 'PriceCol').html(total);
+            $('#' + type + 'Remove').show();
+        });
+    }
+	
+    
+    dinnerModel.attach(function(model, args){
+        if(args == dinnerModel.NUM_OF_GUESTS_CHANGED) {
+            updateDishView(dinnerModel.getNumberOfGuests());
+        }
+    });
+    
+    this.addBackButtonAction = function(action){
+        $('#backToDishesButton').on("click", action);
+    };
     
     var thisDish;
     var total;
     
-    showDishView = function(dish, amountOfPeople) {
+    this.hideView = function(){
+        container.hide();
+    };
+    
+    this.showView = function(dish, amountOfPeople) {
         thisDish = dish;
         dishViewElem = createDishViewElem(dish.name, dish.image, amountOfPeople, dish.ingredients, dish.description);
-        $('#dishView').html(dishViewElem);
+        $('#dishViewContent').html(dishViewElem);
         $('#dishView').show();
-        
-        $('#backToDishesButton').on("click", function(){
-            $('#dishView').hide();
-            showFindDishView();
-        });
         
        $('#confirmDishButton').on("click", function(){
             dinnerModel.addDishToMenu(thisDish.id);
@@ -30,31 +61,9 @@ var DishView = function (container, dinnerModel) {
             $('#' + type + 'Remove').show();
         });
     }
+        
     
-    updateDishView = function(amountOfPeople) {
-        dishViewElem = createDishViewElem(thisDish.name, thisDish.image, amountOfPeople, thisDish.ingredients, thisDish.description);
-        $('#dishView').html(dishViewElem);
-        
-        $('#backToDishesButton').on("click", function(){
-            $('#dishView').hide();
-            showFindDishView();
-        });
-        
-        $('#confirmDishButton').on("click", function(){
-            dinnerModel.addDishToMenu(thisDish.id);
-            $('#pendingRow').hide();
-            type = "";
-            if(thisDish.type == "main dish")
-                type = "main";
-            else if (thisDish.type == "starter")
-                type = "starter";
-            else 
-                type = "dessert";
-            $('#' + type + 'NameCol').html(thisDish.name);
-            $('#' + type + 'PriceCol').html(total);
-        });
-    }
-	
+
     var createDishViewElem = function(name, img, amountOfPeople, ingredients, preparation){
         var dishViewElem = '<div class="row">';
         dishViewElem += '<div class="col-lg-6">';
@@ -85,9 +94,6 @@ var DishView = function (container, dinnerModel) {
         dishViewElem += '<div class="row preparation">';
         dishViewElem += '<h2>Preparation</h2>';
         dishViewElem += '<div class="preparationText">' + preparation + '</div>';
-        dishViewElem += '</div>';
-        dishViewElem += '<div class="row backButton">';
-        dishViewElem += '<button id="backToDishesButton" type="button" class="btn btn-default">back</button>';
         dishViewElem += '</div>';
         
         return dishViewElem;
