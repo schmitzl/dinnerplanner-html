@@ -88,9 +88,12 @@ var DinnerModel = function() {
                 dishOfSameTypeAsCurrentMealInMenu = true;
             }
         }
-        
-        if(!dishOfSameTypeAsCurrentMealInMenu)
+                
+        if(!dishOfSameTypeAsCurrentMealInMenu) {
             menu.push([currentDish, price]);
+        }
+            
+        this.notify(this.MENU_CHANGED);
 	}
 
 	//Removes dish from menu
@@ -104,6 +107,8 @@ var DinnerModel = function() {
                 currentDishIsRemoved = true;
             }
         } 
+        
+        this.notify(this.MENU_CHANGED);
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

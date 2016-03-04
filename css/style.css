@@ -39,6 +39,12 @@ h1, h2, h3 {
     color: white;
 }
 
+.btn-default:disabled {
+    background-color: rgba(153, 185, 19, 0.5);
+    color: white;
+}
+
+
 #header {
     height: 80px;
     background-color: rgba(153, 215, 19, 0.8);
@@ -49,7 +55,9 @@ h1, h2, h3 {
     z-index: 10;
 }
 
-
+.nameCol {
+    cursor: pointer; cursor: hand;
+}
 
 #sidebar {
     padding-left: 0;

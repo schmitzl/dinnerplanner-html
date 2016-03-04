@@ -21,8 +21,7 @@ var DishViewController = function (container, dinnerModel) {
             $('#' + type + 'Remove').show();
         });
     }
-	
-    
+	    
     dinnerModel.attach(function(model, args){
         if(args == dinnerModel.NUM_OF_GUESTS_CHANGED) {
             updateDishView(dinnerModel.getNumberOfGuests());

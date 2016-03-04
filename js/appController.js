@@ -13,6 +13,7 @@ $(function() {
          $('#sidebar').show();
         }
     );
+    
     dishViewController = new DishViewController($('#dishView'), dinnerModel);
     mealButtonAction = function(){
         findDishViewController.hideView();
@@ -23,6 +24,7 @@ $(function() {
         
         dishViewController.showView(thisDish, dinnerModel.getNumberOfGuests());
     };
+    
     findDishViewController = new FindDishViewController($('#findDishView'), dinnerModel.getDishes(), dinnerModel, mealButtonAction);
     
     dishViewController.addBackButtonAction(function(){
@@ -40,14 +42,21 @@ $(function() {
         dinnerOverviewController.showSimpleOverview();
     });
     
+    $('#confirmDinnerButton').prop('disabled', true);
+    
+    $('.nameCol').on('click', function(){
+        $('.viewContainer').hide();
+        $('#sidebar').show();
+        dishViewController.showView(dinnerModel.getDishByName($(this).text()), dinnerModel.getNumberOfGuests());
+    });
+    
     startViewController.showView();
-    
-    
     
     $('#goBackAndEditDinnerButton').on( "click", function() {
          $('.viewContainer').hide();
          findDishViewController.showView();
     });
+    
     
     
 });

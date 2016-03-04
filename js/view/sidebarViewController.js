@@ -31,6 +31,12 @@ var SidebarViewController = function (container, dinnerModel) {
     dinnerModel.attach(function(model, args){
         if(args == dinnerModel.NUM_OF_GUESTS_CHANGED) {
             updateMenuTable();   
+        } else {
+            if(model.getFullMenu().length == 0)
+                $('#confirmDinnerButton').prop('disabled', true);
+            else {
+                $('#confirmDinnerButton').prop('disabled', false);
+            }
         }
     });
     
