@@ -5,7 +5,8 @@ $(function() {
 	$('.viewContainer').hide();
     
     //Create views and initialization
-    sidebarViewController = new SidebarViewController($('#sidebar'), dinnerModel);
+    sidebarView = new SidebarView();
+    sidebarViewController = new SidebarViewController($('#sidebar'), dinnerModel, sidebarView);
     startViewController = new StartViewController($('#startView'));
     startViewController.addDinnerButtonAction(function() {
          startViewController.hideView();
@@ -13,8 +14,8 @@ $(function() {
          $('#sidebar').show();
         }
     );
-    
-    dishViewController = new DishViewController($('#dishView'), dinnerModel);
+    dishView = new DishView();
+    dishViewController = new DishViewController($('#dishView'), dinnerModel, dishView);
     mealButtonAction = function(){
         findDishViewController.hideView();
 
@@ -24,14 +25,17 @@ $(function() {
         
         dishViewController.showView(thisDish, dinnerModel.getNumberOfGuests());
     };
-    
-    findDishViewController = new FindDishViewController($('#findDishView'), dinnerModel.getDishes(), dinnerModel, mealButtonAction);
+    findDishView = new FindDishView();
+    findDishViewController = new FindDishViewController($('#findDishView'), dinnerModel.getDishes(), dinnerModel, mealButtonAction, findDishView);
     
     dishViewController.addBackButtonAction(function(){
         findDishViewController.showView();
         dishViewController.hideView();
     });
-    dinnerOverviewController = new DinnerOverviewController($('#simpleOverview'), $('#printOverview'), dinnerModel);
+    
+    
+    dinnerOverview = new DinnerOverview();
+    dinnerOverviewController = new DinnerOverviewController($('#simpleOverview'), $('#printOverview'), dinnerModel, dinnerOverview);
     printButtonAction = function(){
         dinnerOverviewController.hideSimpleOverview();
         dinnerOverviewController.showPrintView();

@@ -1,37 +1,14 @@
-var SidebarViewController = function (container, dinnerModel) {
+var SidebarViewController = function (container, dinnerModel, sidebarView) {
 
-     $('.numberOfGuests').html(dinnerModel.getNumberOfGuests());
-    
-     updateMenuTable = function(){
-        $('.numberOfGuests').html(dinnerModel.getNumberOfGuests());
-                
-        menu = dinnerModel.getFullMenu();
-        for(var i = 0; i < menu.length; i++) {
-            thisDish = menu[i][0];
-            type = "";
-            if(thisDish.type == "main dish")
-                type = "main";
-            else if (thisDish.type == "starter")
-                type = "starter";
-            else 
-                type = "dessert";
-            $('#' + type + 'PriceCol').html(menu[i][1]*dinnerModel.getNumberOfGuests());
-        }
+    updateMenuTable = function(){
+        sidebarView.updateMenu(dinnerModel.getFullMenu(), dinnerModel.getNumberOfGuests());
     };
 
     
-    this.hideView = function(){
-        container.hide();
-    };
-    
-    this.showView = function() {
-        container.show();
-    };
     
     dinnerModel.attach(function(model, args){
-        if(args == dinnerModel.NUM_OF_GUESTS_CHANGED) {
-            updateMenuTable();   
-        } else {
+        updateMenuTable(); 
+        if(args == dinnerModel.MENU_CHANGED) {
             if(model.getFullMenu().length == 0)
                 $('#confirmDinnerButton').prop('disabled', true);
             else {
@@ -39,6 +16,18 @@ var SidebarViewController = function (container, dinnerModel) {
             }
         }
     });
+    
+    
+     $('.numberOfGuests').html(dinnerModel.getNumberOfGuests());
+    
+     
+    this.hideView = function(){
+        container.hide();
+    };
+    
+    this.showView = function() {
+        container.show();
+    };
     
     $('.remove').hide();
     $('.remove').on('click', function(){
